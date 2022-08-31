@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class fcfs 
+{
+    public :
+    
+    void completion_time( int burst_time [] ,int n ,int cmp_time[])
+    {
+         cmp_time[0] = burst_time[0];
+        
+        for(int i=1 ; i<n; i++)
+        {
+            cmp_time[i] = cmp_time[i-1]+burst_time[i];
+        }
+        
+    }
+    
+    void turnaround_time(int cmp_time[] ,int n ,int arr_time[] , int turn_time[] )
+    {
+        for(int k=0; k<n ; k++)
+        {
+            turn_time[k] = cmp_time[k] - arr_time[k];
+        }
+        
+    }
+    
+    void waiting_time(int burst_time[] ,int n ,int waiting_time[] , int turn_time[] )
+    {
+        
+        for(int k=0; k<n ; k++)
+        {
+           waiting_time[k] = turn_time[k] - burst_time[k];
+        }
+        
+    }
+    
+    
+};
+
+
+int main()
+{
+   fcfs ob;
+   
+   int bt[4] = {3,4,6,7};
+   int ct[4];
+   int tt[4];
+   int wt[4];
+   int at[4] ={0,1,2,3};
+   
+   
+   ob.completion_time(bt , 4 , ct);
+   ob.turnaround_time(ct , 4 , at, tt);
+   ob.waiting_time(bt , 4 , wt , tt);
+   
+   // cout<<"Process Id " <<"  "<<at[i]<<"  "<<bt[i]<<"  "<<ct[i]<<"  "<<tt[i]<<"  "<<wt[i]<<endl;
+   
+   for(int i = 0 ; i< 4 ;i++)
+   {
+       cout<<i<<"  "<<at[i]<<"  "<<bt[i]<<"  "<<ct[i]<<"  "<<tt[i]<<"  "<<wt[i]<<endl;
+   }
+    return 0;
+}
