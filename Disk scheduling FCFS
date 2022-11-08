@@ -4,9 +4,9 @@ using namespace std;
 class DiskScheduling{
 
 public:
-  float FCFS(int arr[],int n,int init)
+  float FCFS(int arr[],int n,int it)
 {
-   float ans=abs(init-arr[0]);
+   float ans=abs(it-arr[0]);
 
   for(int i=1;i<n;i++)
     {
