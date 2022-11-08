@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class DiskScheduling{
+
+public:
+  float FCFS(int arr[],int n,int init)
+{
+   float ans=abs(init-arr[0]);
+
+  for(int i=1;i<n;i++)
+    {
+      ans=ans+abs(arr[i]-arr[i-1]);
+    }
+
+  return ans/n;
+}
+
+};
+int main()
+{
+  int disk[]={55,58,39,18,90,160,100,38,184};
+
+  DiskScheduling obj;
+  cout<<obj.FCFS(disk,9,100);
+  return 0;
+  
+}
